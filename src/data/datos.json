@@ -1,0 +1,13 @@
+{
+    "productos": [
+      { "nombre": "Producto A", "precio": 700000 },
+      { "nombre": "Producto B", "precio": 900000 },
+      { "nombre": "Producto C", "precio": 1100000 },
+      { "nombre": "Producto D", "precio": 1300000 },
+      { "nombre": "Producto E", "precio": 1500000 },
+      { "nombre": "Producto F", "precio": 1700000 }
+    ],
+    "comisiones": [10, 15, 20, 35, 40],
+    "tasasCierre": [0.3, 0.35, 0.5, 0.5, 0.5]
+  }
+  
