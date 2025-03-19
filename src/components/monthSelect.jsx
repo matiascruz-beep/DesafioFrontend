@@ -21,9 +21,9 @@ const MonthSelector = () => {
   
     return (
       <>
-<p className="text-sm font-medium text-gray-700 text-right">Selecciona un mes:</p>
+<p className="text-sm font-semibold text-gray-200 text-right">📅 Selecciona un mes:</p>
         {/* Dropdown para seleccionar el mes */}
-        <select value={selectedMonth} onChange={handleMonthChange} className='text-gray-700 p-2 rounded w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 transition"'>
+        <select value={selectedMonth} onChange={handleMonthChange} className="text-gray-900 w-full p-3 border border-gray-500 rounded-lg shadow-md bg-gray-100 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all duration-300">
           <option value="1">Enero</option>
           <option value="2">Febrero</option>
           <option value="3">Marzo</option>
