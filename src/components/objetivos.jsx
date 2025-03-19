@@ -55,12 +55,13 @@ const Objetivos = ({ producto }) => {
   </div>
 
   {/* Ventas Necesarias */}
-  <div className="grid grid-cols-2 gap-6 items-center mb-6">
-    <p className="text-sm text-gray-300 text-right">🔢 Ventas Necesarias:</p>
-    <p className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-teal-500">
-      ${ventasNecesarias.toLocaleString()}
-    </p>
-  </div>
+<div className="grid grid-cols-2 gap-6 items-center mb-6">
+  <p className="text-sm text-gray-300 text-right">🔢 Ventas Necesarias:</p>
+  <p className="text-2xl sm:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-teal-500 break-words">
+    ${ventasNecesarias.toLocaleString()}
+  </p>
+</div>
+
 
   {/* Volumen Carrera */}
   <div className="grid grid-cols-2 gap-6 items-center mb-6">
