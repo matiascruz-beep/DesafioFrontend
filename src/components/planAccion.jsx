@@ -38,11 +38,11 @@ const PlanAccion = () => {
 
   return (
     <>
-     <div className="p-6 bg-gradient-to-br from-gray-800 via-gray-700 to-gray-600 rounded-lg shadow-lg hover:shadow-xl hover:brightness-110 transition-all duration-300">
+  <div className="mt-4 p-6 bg-gradient-to-br from-gray-800 via-gray-700 to-gray-600 rounded-lg shadow-lg hover:shadow-xl hover:brightness-110 transition-all duration-300">
   <h2 className="text-lg font-semibold mb-6 text-center text-white tracking-wide">
     📊 Plan de Acción
   </h2>
-  </div>
+  
   <div className="p-6 bg-gradient-to-br from-gray-800 via-gray-700 to-gray-600 rounded-lg shadow-lg hover:shadow-xl hover:brightness-110 transition-all duration-300">
   {/* Nuevos datos a prospectar */}
   <div className="grid grid-cols-2 gap-4 items-center mb-4">
@@ -59,7 +59,7 @@ const PlanAccion = () => {
       <div className="grid grid-cols-2 gap-4 items-center mb-4">
         <p className="text-sm text-gray-300 text-right font-medium">🔢 Min. Presentaciones por mes:</p>
         <p className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-teal-500">
-         {MinPresentacionesMes.toFixed(1)}
+         {Math.round(MinPresentacionesMes.toFixed(1))}
        </p>
     </div>
   </div>
@@ -68,9 +68,10 @@ const PlanAccion = () => {
   <div className="grid grid-cols-2 gap-4 items-center mb-4">
     <p className="text-sm text-gray-300 text-right font-medium">🔢 Min. Presentaciones por Semana:</p>
     <p className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-teal-500">
-      {(MinPresentacionesMes)/4+1}
+      {Math.round((MinPresentacionesMes)/4+1)}
     </p>
   </div>
+</div>
 </div>
     </>
   );
