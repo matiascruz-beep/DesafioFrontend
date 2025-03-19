@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useGlobalContext } from "../context/GlobalContext"; // Importamos el contexto global
+
 
 const productos = {
   "Producto A": 700000,
@@ -11,6 +13,8 @@ const productos = {
   "Producto H": 2100000,
 };
 
+
+
 const calcularGanancia = (precio, comision) => {
   if (comision === 40) {
     return Math.round(precio * (comision / 100)); // Sin quitar IVA
@@ -21,45 +25,64 @@ const calcularGanancia = (precio, comision) => {
 };
 
 export default function SimuladorComision() {
+  const { comision, setComision } = useGlobalContext(); // 🚀 Obtenemos el valor de comision y su función para modificarlo
+
+  const handleComisionChange = (e) => {
+    setComision(Number(e.target.value)); // 🔥 Actualizamos el estado globalmente
+  };
+
+
   const [productoSeleccionado, setProductoSeleccionado] = useState("Producto A");
-  const [comision, setComision] = useState(10);
+  //const [comision, setComision] = useState(10);
 
   const precioProducto = productos[productoSeleccionado];
   const ganancia = calcularGanancia(precioProducto, comision);
 
   return (
     <>
-    <div className="grid grid-cols-2 gap-4 items-center mb-4">
-      <label className="block mb-2 text-sm font-medium text-gray-700 text-right">Selecciona un producto:</label>
-      <select
-        className="text-gray-700 w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 transition"
-        value={productoSeleccionado}
-        onChange={(e) => setProductoSeleccionado(e.target.value)}
-      >
-        {Object.keys(productos).map((producto) => (
-          <option key={producto} value={producto}>{producto}</option>
-        ))}
-      </select>
+    <div className="grid grid-cols-2 gap-4 items-center mb-4 bg-gray-800 p-4 rounded-lg shadow-lg">
+  {/* Selección de producto */}
+  <label className="text-sm font-semibold text-gray-200 text-right">
+    📌 Selecciona un producto:
+  </label>
+  <select
+    className="text-gray-900 w-full p-3 border border-gray-500 rounded-lg shadow-md bg-gray-100 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all duration-300"
+    value={productoSeleccionado}
+    onChange={(e) => setProductoSeleccionado(e.target.value)}
+  >
+    {Object.keys(productos).map((producto) => (
+      <option key={producto} value={producto}>
+        {producto}
+      </option>
+    ))}
+  </select>
 
-      <label className="block mb-2 text-sm font-medium text-gray-700 text-right">Selecciona comisión:</label>
-      <select
-        className="text-gray-700 w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 transition"
-        value={comision}
-        onChange={(e) => setComision(parseInt(e.target.value))}
-      >
-        {[10, 15, 20, 35, 40].map((porcentaje) => (
-          <option key={porcentaje} value={porcentaje}>
-            {porcentaje}%
-          </option>
-        ))}
-      </select>
-    </div>
-    <div className="grid grid-cols-2 gap-4 items-center mb-4">
-    <p className="text-sm font-medium text-gray-700 text-right">
-    Ganancia Calculada: 
+  {/* Selección de comisión */}
+  <label className="text-sm font-semibold text-gray-200 text-right">
+    💰 Selecciona comisión:
+  </label>
+  <select
+    className="text-gray-900 w-full p-3 border border-gray-500 rounded-lg shadow-md bg-gray-100 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all duration-300"
+    value={comision}
+    onChange={handleComisionChange}
+  >
+    {[10, 15, 20, 35, 40].map((porcentaje) => (
+      <option key={porcentaje} value={porcentaje}>
+        {porcentaje}%
+      </option>
+    ))}
+  </select>
+</div>
+
+{/* Resultado de ganancia */}
+<div className="grid grid-cols-2 gap-4 items-center mb-4 bg-gray-800 p-4 rounded-lg shadow-lg">
+  <p className="text-sm font-semibold text-gray-200 text-right">
+    💵 Tu ganancia neta hoy:
   </p>
-  <span className="bg-green-400 text-white w-full p-2 border border-green-600 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 transition">${ganancia}</span>
-    </div>
+  <span className="bg-green-500 text-white w-full p-3 text-center border border-green-700 rounded-lg shadow-md text-lg font-bold">
+    ${ganancia.toLocaleString()}
+  </span>
+</div>
     </>
   );
 }

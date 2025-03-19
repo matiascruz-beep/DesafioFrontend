@@ -10,7 +10,7 @@ function App() {
 
   return (
     <>
-       <div className="min-h-screen bg-black">
+       <div className="min-h-screen bg-black w-full">
       <Header />
       <Simulador />
     </div>
