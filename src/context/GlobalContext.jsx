@@ -6,7 +6,7 @@ const GlobalContext = createContext();
 // 2️⃣ Creamos el Provider
 export const GlobalProvider = ({ children }) => {
   const [producto, setProducto] = useState("Producto A");
-  const [ticketPromedio, setTicketPromedio] = useState(1200);
+  const [ticketPromedio, setTicketPromedio] = useState(800);
   const [valorUSD, setValorUSD] = useState(1055);
   const [comision, setComision] = useState(10);
   const [ventasMes, setVentasMes] = useState(0);
